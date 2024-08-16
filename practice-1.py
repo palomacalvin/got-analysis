@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas
 
+# Reads CSV file and creates lists of data for each rater
 csv_file = pandas.read_csv("data.csv")
 paloma = csv_file["Paloma Score"].values.tolist()
 jack = csv_file["Jack Score"].values.tolist()
@@ -12,11 +13,38 @@ ax.scatter(episodes, paloma)         # Plot some data on the Axes.
 plt.show()                           # Show the figure.
 
 
+# Create lists of ratings separated by season
+s1_p = paloma[0:10]
+s1_j = jack[0:10]
+
+s2_p = paloma[10:20]
+s2_j = jack[10:20]
+
+s3_p = paloma[20:30]
+s3_j = jack[20:30]
+
+s4_p = paloma[30:40]
+s4_j = jack[30:40]
+
+s5_p = paloma[40:50]
+s5_j = jack[40:50]
+
+s6_p = paloma[50:60]
+s6_j = jack[50:60]
+
+s7_p = paloma[60:67]
+s7_j = jack[60:67]
+
+s8_p = paloma[67:73]
+s8_j = jack[67:73]
+
+
 # Bar graphs of:
 # Avg. rating per season, totaled by all data
 
+
 ### Compute averages for all episodes by person
-### todo: turn this into a function
+### todo: turn this into a function?
 avg_total_p = 0
 avg_total_j = 0
 count_p = 0
@@ -82,3 +110,14 @@ plt.show()
 
 
 # Show which episodes were rated the same between raters
+same_rating = []
+episode_num = 0
+length = len(jack)
+
+for episode_num in range(length):
+    if jack[episode_num] == paloma[episode_num]:
+        same_rating.append(episode_num)
+
+print(same_rating)
+
+# Create a pdf of all the plots to display them together
